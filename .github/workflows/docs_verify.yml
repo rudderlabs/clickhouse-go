@@ -26,8 +26,13 @@ jobs:
     container:
       image: clickhouse/docs-builder
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@b09bb98e06d4d774595224525879c09bc6e98c40 # v2.20.1
+        with:
+          egress-policy: audit
+
       - name: Checkout docs source
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
 
       # Fetch the check driver from ClickHouse/ClickHouse rather than vendoring
       # it. The driver shallow/sparse-clones the aggregator docs plus its CI
