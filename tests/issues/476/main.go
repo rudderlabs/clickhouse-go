@@ -6,11 +6,11 @@ import (
 	"log"
 	"reflect"
 
-	_ "github.com/ClickHouse/clickhouse-go/v2"
+	_ "github.com/rudderlabs/clickhouse-go/v2"
 )
 
 func main() {
-	c, err := sql.Open("clickhouse", fmt.Sprintf("clickhouse://%s:%s@%s:%d/", "", "", "localhost", 9000))
+	c, err := sql.Open("clickhouse-v2", fmt.Sprintf("clickhouse://%s:%s@%s:%d/", "", "", "localhost", 9000))
 	if err != nil {
 		log.Printf("Can't create connection to db")
 		log.Fatal(err)

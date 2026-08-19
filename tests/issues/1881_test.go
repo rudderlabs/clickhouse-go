@@ -9,8 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ClickHouse/clickhouse-go/v2"
-	clickhouse_tests "github.com/ClickHouse/clickhouse-go/v2/tests"
+	"github.com/rudderlabs/clickhouse-go/v2"
+	clickhouse_tests "github.com/rudderlabs/clickhouse-go/v2/tests"
 )
 
 // TestIssue1881_FixedUTCOffsetTimezone verifies that DateTime / DateTime64
@@ -83,7 +83,7 @@ func TestIssue1881_FixedUTCOffsetTimezone(t *testing.T) {
 			}
 			t.Run(proto, func(t *testing.T) {
 				opts := clickhouse_tests.ClientOptionsFromEnv(testEnv, nil, useHTTP)
-				db, err := sql.Open("clickhouse", clickhouse_tests.OptionsToDSN(&opts))
+				db, err := sql.Open("clickhouse-v2", clickhouse_tests.OptionsToDSN(&opts))
 				require.NoError(t, err)
 				t.Cleanup(func() { db.Close() })
 

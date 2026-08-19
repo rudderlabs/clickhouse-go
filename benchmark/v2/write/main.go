@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	_ "github.com/ClickHouse/clickhouse-go/v2"
+	_ "github.com/rudderlabs/clickhouse-go/v2"
 )
 
 const ddl = `
@@ -46,7 +46,7 @@ func benchmark(conn *sql.DB) error {
 	return scope.Commit()
 }
 func main() {
-	conn, err := sql.Open("clickhouse", "clickhouse://127.0.0.1:9000")
+	conn, err := sql.Open("clickhouse-v2", "clickhouse://127.0.0.1:9000")
 	if err != nil {
 		log.Fatal(err)
 	}
